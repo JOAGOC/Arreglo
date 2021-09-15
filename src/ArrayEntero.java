@@ -9,6 +9,7 @@
  * @author Angel
  */
 public class ArrayEntero {
+
     private int tam, tope = 0;
     private int A[];
     private boolean orden;
@@ -18,15 +19,32 @@ public class ArrayEntero {
         A = new int[tam];
     }
 
+    public int busquedaBinaria(int numeroBuscado) {
+        ordenarAsc();
+        int i = 0, f = tope, medio = 0;
+        while (i <= f) {
+            medio = (int)((i + f)/2);
+            if (numeroBuscado > A[medio])
+                i = medio + 1;
+            else if (numeroBuscado < A[medio])
+                f = medio - 1;
+            else
+                return medio;
+        }
+        return -1;
+    }
+
     public void inicializar() {
-        for (int i = 0; i < tam; i++)
+        for (int i = 0; i < tam; i++) {
             A[i] = (int) (Math.random() * 100);
+        }
         tope = tam;
     }
 
     public void mostrar() {
-        for (int i = 0; i <= tope; i++)
+        for (int i = 0; i <= tope; i++) {
             System.out.print("[" + A[i] + "]\n");
+        }
     }
 
     public static void main(String[] args) {
@@ -78,41 +96,62 @@ public class ArrayEntero {
 
     public void sacar() throws Exception {
         try {
-            if (vacio())
+            if (vacio()) {
                 throw new Exception();
-            else
+            } else {
                 tope--;
+            }
         } catch (Exception e) {
             throw new Exception("El arreglo está vacío");
         }
     }
 
+    private void ordenarDsc() {
+        int x = tope - 1;
+        for (int i = 0; i < x; i++) {
+            for (int j = i + 1; j < tope; j++) {
+                if (A[i] < A[j]) {
+                    int xd = A[i];
+                    A[i] = A[j];
+                    A[j] = xd;
+                }
+            }
+        }
+    }
+
+    private void ordenarAsc() {
+        int x = tope - 1;
+        for (int i = 0; i < x; i++) {
+            for (int j = i + 1; j < tope; j++) {
+                if (A[i] > A[j]) {
+                    int xd = A[i];
+                    A[i] = A[j];
+                    A[j] = xd;
+                }
+            }
+        }
+    }
+
     public long ordenar() {//(6n^2-9n+7)
         long startTime = System.nanoTime(); // 1
-        int x = tope - 1;// 1
         if (orden = !orden) // 1
-            //         1     n  (n-1)
-            for (int i = 0; i < x; i++) {
-                //         2        n      (n-1)
-                for (int j = i+1; j < tope; j++) { //m = 
-                    if (A[i] < A[j]) //1
-                    {
-                        int xd = A[i];//1
-                        A[i] = A[j];//1
-                        A[j] = xd;//1
-                    }//4(n-1)=4n-4=>4n-4+2n+1=  6n-3 => (n-1)(6n-3) + 2n = (6n^2-9n+3)+(4) =>  = 6n^2-9n+7
-                }
-            }
-        else
-            for (int i = 0; i < x; i++) {
-                for (int j = i+1; j < tope; j++) {
-                    if (A[i] > A[j]) {
-                        int xd = A[i];
-                        A[i] = A[j];
-                        A[j] = xd;
-                    }
-                }
-            }
+        //         1     n  (n-1)
+        {
+            ordenarDsc();
+//            for (int i = 0; i < x; i++) {
+//                //         2        n      (n-1)
+//                for (int j = i + 1; j < tope; j++) { //m = 
+//                    if (A[i] < A[j]) //1
+//                    {
+//                        int xd = A[i];//1
+//                        A[i] = A[j];//1
+//                        A[j] = xd;//1
+//                    }//4(n-1)=4n-4=>4n-4+2n+1=  6n-3 => (n-1)(6n-3) + 2n = (6n^2-9n+3)+(4) =>  = 6n^2-9n+7
+//                }
+//            }
+        } else {
+            ordenarAsc();
+        }
         return System.nanoTime() - startTime; //1
     }
 }
