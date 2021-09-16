@@ -21,15 +21,43 @@ public class ArrayEntero {
 
     public int busquedaBinaria(int numeroBuscado) {
         ordenarAsc();
-        int i = 0, f = tope, medio = 0;
-        while (i <= f) {
-            medio = (int)((i + f)/2);
-            if (numeroBuscado > A[medio])
-                i = medio + 1;
-            else if (numeroBuscado < A[medio])
-                f = medio - 1;
-            else
+        //6     log^2     n/2
+        for (int i = 0, f = tope - 1, medio = (i + f) / 2; i <= f; medio = (i + f) / 2) {
+            if (numeroBuscado == A[medio]) {
+                return medio;//2
+            } else if (numeroBuscado > A[medio]) {
+                i = medio + 1;//3
+            } else {
+                f = medio - 1;//3
+            }
+        }
+        return -1;
+    }
+    
+    public int busquedaBinariaR(int numeroBuscado, int inicio, int fin){
+        if (inicio > fin)
+        {
+            return -1;
+        }
+        else
+        {
+            int medio = (inicio + fin) / 2;
+            if (numeroBuscado == A[medio])
                 return medio;
+            else if (numeroBuscado < A[medio])
+                return busquedaBinariaR(numeroBuscado,inicio,medio-1);
+            else
+                return busquedaBinariaR(numeroBuscado, medio+1,fin);
+        }
+    }
+
+    public int busquedaSecuencial(int numeroBuscado) {
+        for (int i = 0; i < tope; i++)//2(n) = 2n+2n+2= (O)4n+3
+        {
+            if (A[i] == numeroBuscado)//1
+            {
+                return i;//1
+            }
         }
         return -1;
     }

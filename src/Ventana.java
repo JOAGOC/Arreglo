@@ -59,7 +59,9 @@ public class Ventana extends javax.swing.JFrame {
         lblOrdenar = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnBusquedaBinaria = new javax.swing.JButton();
-        tFBusquedaBinaria = new javax.swing.JTextField();
+        btnBusquedaSecuencial = new javax.swing.JButton();
+        tFBusqueda = new javax.swing.JTextField();
+        btnBuscarBR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(380, 460));
@@ -78,6 +80,7 @@ public class Ventana extends javax.swing.JFrame {
         tFTamanio.setPreferredSize(new java.awt.Dimension(60, 20));
         tFTamanio.setVerifyInputWhenFocusTarget(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 5;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 5);
@@ -109,6 +112,7 @@ public class Ventana extends javax.swing.JFrame {
         tFDato.setVerifyInputWhenFocusTarget(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 5;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 5);
@@ -149,8 +153,8 @@ public class Ventana extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         getContentPane().add(btnMostrar, gridBagConstraints);
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(80, 80));
@@ -170,7 +174,9 @@ public class Ventana extends javax.swing.JFrame {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.gridheight = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = 42;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
@@ -188,6 +194,7 @@ public class Ventana extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
         getContentPane().add(btnSacar, gridBagConstraints);
 
         btnOrdenarBurbuja.setText("Ordenar");
@@ -213,7 +220,7 @@ public class Ventana extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setVerifyInputWhenFocusTarget(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
         gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -222,7 +229,7 @@ public class Ventana extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
         getContentPane().add(jPanel1, gridBagConstraints);
 
-        btnBusquedaBinaria.setText("Buscar");
+        btnBusquedaBinaria.setText("BuscarB");
         btnBusquedaBinaria.setVerifyInputWhenFocusTarget(false);
         btnBusquedaBinaria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,16 +240,42 @@ public class Ventana extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
         getContentPane().add(btnBusquedaBinaria, gridBagConstraints);
 
-        tFBusquedaBinaria.setVerifyInputWhenFocusTarget(false);
+        btnBusquedaSecuencial.setText("BuscarS");
+        btnBusquedaSecuencial.setVerifyInputWhenFocusTarget(false);
+        btnBusquedaSecuencial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBusquedaSecuencialActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
-        getContentPane().add(tFBusquedaBinaria, gridBagConstraints);
+        getContentPane().add(btnBusquedaSecuencial, gridBagConstraints);
+
+        tFBusqueda.setVerifyInputWhenFocusTarget(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        getContentPane().add(tFBusqueda, gridBagConstraints);
+
+        btnBuscarBR.setText("BuscarBR");
+        btnBuscarBR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarBRActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        getContentPane().add(btnBuscarBR, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -271,7 +304,7 @@ public class Ventana extends javax.swing.JFrame {
     private void btnBusquedaBinariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaBinariaActionPerformed
         try {
             int pos;
-            showMessageDialog(this,((pos = a.busquedaBinaria(Integer.parseInt(tFBusquedaBinaria.getText()))) == -1)?"El número no ha sido encontrado":"El número ha sido encontrado en la posición "+pos);
+            showMessageDialog(this,((pos = a.busquedaBinaria(Integer.parseInt(tFBusqueda.getText()))) == -1)?"El número no ha sido encontrado":"El número ha sido encontrado en la posición "+pos);
             btnMostrarActionPerformed(null);
         } catch (NullPointerException e) {
             showMessageDialog(this, anc);
@@ -279,6 +312,30 @@ public class Ventana extends javax.swing.JFrame {
             showMessageDialog(this, piun + " entero");
         }
     }//GEN-LAST:event_btnBusquedaBinariaActionPerformed
+
+    private void btnBusquedaSecuencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaSecuencialActionPerformed
+        try {
+            int pos;
+            showMessageDialog(this,((pos = a.busquedaSecuencial(Integer.parseInt(tFBusqueda.getText()))) == -1)?"El número no ha sido encontrado":"El número ha sido encontrado en la posición "+pos);
+            btnMostrarActionPerformed(null);
+        } catch (NullPointerException e) {
+            showMessageDialog(this, anc);
+        } catch (NumberFormatException e) {
+            showMessageDialog(this, piun + " entero");
+        }
+    }//GEN-LAST:event_btnBusquedaSecuencialActionPerformed
+
+    private void btnBuscarBRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarBRActionPerformed
+        try {
+            int pos;
+            showMessageDialog(this,((pos = a.busquedaBinariaR(Integer.parseInt(tFBusqueda.getText()),0,a.getTope()-1)) == -1)?"El número no ha sido encontrado":"El número ha sido encontrado en la posición "+pos);
+            btnMostrarActionPerformed(null);
+        } catch (NullPointerException e) {
+            showMessageDialog(this, anc);
+        } catch (NumberFormatException e) {
+            showMessageDialog(this, piun + " entero");
+        }
+    }//GEN-LAST:event_btnBuscarBRActionPerformed
 
     private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSacarActionPerformed
         try {
@@ -392,7 +449,9 @@ public void buscar(){
     private javax.swing.table.DefaultTableModel m;
     private ArrayEntero a;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarBR;
     private javax.swing.JButton btnBusquedaBinaria;
+    private javax.swing.JButton btnBusquedaSecuencial;
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnInicializar;
     private javax.swing.JButton btnInsertar;
@@ -405,7 +464,7 @@ public void buscar(){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTDato;
     private javax.swing.JLabel lblOrdenar;
-    private javax.swing.JTextField tFBusquedaBinaria;
+    private javax.swing.JTextField tFBusqueda;
     private javax.swing.JTextField tFDato;
     private javax.swing.JTextField tFTamanio;
     // End of variables declaration//GEN-END:variables
